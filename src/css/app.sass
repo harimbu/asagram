@@ -1,0 +1,23 @@
+// app global css in Sass form
+.font-title
+  font-family: 'Grand Hotel', sans-serif
+
+.wrap
+  max-width: 960px
+  margin: 0 auto
+
+.wrap-more
+  max-width: 600px
+  margin: 0 auto
+
+.small-only
+  @media (max-width: $breakpoint-xs-max)
+    display: block
+  @media (min-width: $breakpoint-xs-max)
+    display: none    
+
+.large-only
+  @media (max-width: $breakpoint-xs-max)
+    display: none
+  @media (min-width: $breakpoint-xs-max)
+    display: block        
