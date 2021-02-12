@@ -7,8 +7,8 @@
 // https://quasar.dev/quasar-cli/quasar-conf-js
 /* eslint-env node */
 
-const API_LOCAL = 'http://localhost:3000'
-// const API_PRODUCTION = 'https://asagram-backend.herokuapp.com'
+// const API_LOCAL = 'http://localhost:3000'
+const API_PRODUCTION = 'https://asagram-backend.herokuapp.com'
 
 module.exports = function (/* ctx */) {
   return {
@@ -50,8 +50,8 @@ module.exports = function (/* ctx */) {
     build: {
 
       env: {
-        // API: API_PRODUCTION
-        API: API_LOCAL
+        API: API_PRODUCTION
+        // API: API_LOCAL
       },
 
       vueRouterMode: 'hash', // available values: 'hash', 'history'
@@ -109,9 +109,7 @@ module.exports = function (/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      plugins: [
-        'Dialog'
-      ]
+      plugins: ['Dialog', 'Notify', 'Loading']
     },
 
     // animations: 'all', // --- includes all animations
@@ -128,13 +126,13 @@ module.exports = function (/* ctx */) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'Quasar App',
-        short_name: 'Quasar App',
-        description: 'A Quasar Framework app',
+        name: 'Quasargrma - Share Expriences',
+        short_name: 'Quasar',
+        description: 'A Simple Instagram Clone - Made with Quasar',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
-        theme_color: '#027be3',
+        theme_color: '#02C8E3',
         icons: [
           {
             src: 'icons/icon-128x128.png',

@@ -6,8 +6,7 @@
   "author": "harimbu <harimbu@gmail.com>",
   "private": true,
   "scripts": {
-    "lint": "eslint --ext .js,.vue ./",
-    "test": "echo \"No test specified\" && exit 0"
+    "icons": "icongenie generate -i app-icon.png --skip-trim --theme-color 212121"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
@@ -27,7 +26,8 @@
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
-    "eslint-plugin-vue": "^6.1.2"
+    "eslint-plugin-vue": "^6.1.2",
+    "workbox-webpack-plugin": "^5.0.0"
   },
   "browserslist": [
     "ie >= 11",

@@ -105,6 +105,7 @@ export default {
       })
     }
   },
+
   filters: {
     niceDate (value) {
       return date.formatDate(value, 'YYYY.MM.DD ddd HH:mm:ss a')

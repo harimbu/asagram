@@ -15,7 +15,15 @@
       />
     </div>
     <div class="text-center q-pa-md">
-      <q-btn round color="grey-10" icon="eva-camera" size="18px" @click="captureImage" v-if="hasCameraSupport" />
+      <q-btn
+        v-if="hasCameraSupport"
+        @click="captureImage"
+        :disable="imageCaptured"
+        color="grey-10"
+        icon="eva-camera"
+        size="18px"
+        round
+      />
       <!-- TODO : q-file API확인 -->
       <q-file
         v-else
@@ -46,7 +54,14 @@
       </div>
     </div>
     <div class="text-center q-mt-lg">
-      <q-btn unelevated rounded color="primary" label="Upload Image" @click="addPost" />
+      <q-btn
+        @click="addPost"
+        :disable="!post.caption || !post.photo || !post.location"
+        color="primary"
+        label="Upload Image"
+        rounded
+        unelevated
+      />
     </div>
   </q-page>
 </template>
@@ -168,6 +183,8 @@ export default {
       this.loadingState = false
     },
     addPost () {
+      this.$q.loading.show()
+
       const formData = new FormData()
       formData.append('id', this.post.id)
       formData.append('caption', this.post.caption)
@@ -177,8 +194,23 @@ export default {
 
       this.$axios.post(`${process.env.API}/createPost`, formData).then(response => {
         console.log(response)
+        this.$router.push('/')
+        this.$q.notify({
+          message: 'Post created!',
+          color: 'success',
+          avatar: 'https://cdn.quasar.dev/img/boy-avatar.png',
+          actions: [
+            { label: 'Dismiss', color: 'white' }
+          ]
+        })
+        this.$q.loading.hide()
       }).catch(error => {
         console.log(error)
+        this.$q.dialog({
+          title: '알림',
+          message: '사진을 업로드 할 수 없습니다.'
+        })
+        this.$q.loading.hide()
       })
     }
   }
